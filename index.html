@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b1020">
+  <title>Sepolia Wallet Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <div class="brand"><span class="mark">Ξ</span><div><strong>Sepolia Wallet Lab</strong><small>Mobile ETH practice</small></div></div>
+      <button id="connect" class="connect">Connect wallet</button>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">SEPOLIA TEST NETWORK</p>
+      <h1>Deposit, send, and track test ETH.</h1>
+      <p class="intro">Open this page inside the MetaMask mobile browser, connect your wallet, then approve each transaction in MetaMask.</p>
+      <div class="balance"><span>Wallet balance</span><strong id="balance">—</strong><small id="wallet">Not connected</small></div>
+    </section>
+
+    <section class="network" id="network"><span class="dot"></span><span>Connect a Sepolia wallet to begin</span></section>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-panel="deposit">Store money</button>
+      <button class="tab" data-panel="transfer">Transfer</button>
+      <button class="tab" data-panel="activity">Activity</button>
+    </div>
+
+    <section class="panel active" id="deposit">
+      <h2>Store test ETH</h2>
+      <p class="hint">Send Sepolia ETH to your deployed vault / contract address. Your wallet will show the final confirmation.</p>
+      <label>Vault or contract address<input id="vault" inputmode="text" placeholder="0x…"></label>
+      <label>Amount (SepoliaETH)<input id="depositAmount" inputmode="decimal" placeholder="0.01"></label>
+      <button class="primary" id="depositButton">Deposit test ETH</button>
+    </section>
+
+    <section class="panel" id="transfer">
+      <h2>Transfer test ETH</h2>
+      <p class="hint">Send directly to another Sepolia address.</p>
+      <label>Recipient address<input id="recipient" inputmode="text" placeholder="0x…"></label>
+      <label>Amount (SepoliaETH)<input id="sendAmount" inputmode="decimal" placeholder="0.01"></label>
+      <button class="primary" id="sendButton">Send Sepolia ETH</button>
+    </section>
+
+    <section class="panel" id="activity">
+      <h2>Recent actions</h2>
+      <p class="hint">This device keeps a local list of transactions submitted from this page.</p>
+      <div id="activityList" class="activity"></div>
+    </section>
+    <p class="status" id="status" aria-live="polite"></p>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.13.4/dist/ethers.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
